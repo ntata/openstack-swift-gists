@@ -30,7 +30,8 @@ specific object's hash in the hashes.invalid file.
     │   │   │   │   └── d3f2d3bfcb4f66177f93384e0756ca9c ---> hash (of the object name) directory
     │   │   │   │       └── 1487355585.12092.data        ---> object file stored with timestamp as its name
     │   │   │   ├── hashes.invalid -------------------------> list of invalidated hashes per partition
-    │   │   │   └── hashes.pkl -----------------------------> pickled obj of hashes of contents for each suffix directory per partition
+    │   │   │   └── hashes.pkl -----------------------------> pickled object of hashes of contents for each
+    |   |                                                      suffix directory per partition
     │   ├── objects-1 
     │   ├── objects-2
     │   └── tmp
@@ -59,10 +60,10 @@ suffix thereby marking it for replication.
 What is the problem to solve?
 -----------------------------
 At a very high level, the frequency at which hashes.pkl file needs to be calculated must be determined. In the above scenario, 
-when we manually deleted the .data file, if we manually recalculated and updated the hashes.pkl file, everything would have worked 
-normally because replcaitor in its next run, will stumble upon the changed hashes.pkl and will recover the cluster by comparing the 
-time stamps across the respective primaries. However, that is not the case with manual deletion of .data file. Hence we need to find 
-a way to timely recalculate the hashes.pkl to keep the cluster consistent and durable.
+when we manually deleted the .data file, if we manually recalculated and updated the hashes.pkl file, everything would have
+worked normally because replcaitor in its next run, will stumble upon the changed hashes.pkl and will recover the cluster by
+comparing the time stamps across the respective primaries. However, that is not the case with manual deletion of .data file. 
+Hence we need to find a way to timely recalculate the hashes.pkl to keep the cluster consistent and durable.
 
 References:
 -----------
