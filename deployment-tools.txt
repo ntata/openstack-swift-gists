@@ -32,7 +32,7 @@ the striking features:
 Chef
 ----
 Chef, introduced in 2008 is also one of the oldest and mature tools to automate deployment
-of services. Like Puppet, Chef is also managed trhough community process under the Big 
+of services. Like Puppet, Chef is also managed through community process under the Big 
 Tent (OpenStack). Let's look at the features now:
   - most difficult to setup given the additional workstation
   - uses pull configuration like Puppet. i.e. clients pulls configuration from server
@@ -41,8 +41,8 @@ Tent (OpenStack). Let's look at the features now:
     works on Windows too
   - not a "master-less layout. i.e. chef follows a client-server architecture with chef 
     master running on server manchine and chef client working on client machines. Also contains 
-    an extra component called workstation that contains all the configurations where all the
-    configurations first tested and then pushed onto the client servers.
+    an extra component called workstation that contains all the configurations where they are
+    first tested and then pushed onto the client servers.
   - highly scalable
   - users:
      - Bloomberg
@@ -58,10 +58,12 @@ today. Here's why:
  - master-less layout! i.e. master runs on a server but with no agents running on client machines. 
  - uses ssh to login to the client and communicate. Comuunication with ssh becomes a bottleneck 
    at high scale
- - eaiest to learn and setup
+ - easiest to learn and setup
  - uses push configuration i.e. server pushes configurations to all nodes making it immediate 
    remote execution.
  - uses YAML (Python) which is very simple to understand and customize solutions
+ - extensively and clearly documented making the learning curve much more flat compared to the
+   rest
  - users:
     - Bluebox,
     - RedHat
