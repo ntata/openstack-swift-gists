@@ -118,3 +118,14 @@ NOTE:
 This aritcle is purely opinionated and highly abstract on a lot of technical details.
 Intention for this exploration was to find an appropriate tool to deploy multi node
 OpenStack Swift. 
+
+Resources:
+-----------
+http://jensrantil.github.io/salt-vs-ansible.html
+https://blog.ryandlane.com/2014/08/04/moving-away-from-puppet-saltstack-or-ansible/
+https://www.amon.cx/blog/saltstack-review/
+https://www.youtube.com/watch?v=OmRxKQHtDbY&t=756s
+https://www.youtube.com/watch?v=2H95tx7Fuv4&t=2s
+https://www.youtube.com/watch?v=AxvtWfkO-AU
+https://github.com/nmadhok/openstack-salt
+https://github.com/nmadhok/saltopenstack
