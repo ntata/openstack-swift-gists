@@ -1,0 +1,120 @@
+
+Can Salt compete against Puppet, Chef and Ansible?
+=================================================
+To take a stab at that question, we first need to understand what each of the available
+tools offer today. This article is a compilation of purely internet blogposts from various
+devops and not personally tested or tried due to a limited time research.
+
+Puppet
+------
+Puppet, introduced in 2005 is one of the oldest and mature projects used to deploy OpenStack
+and is managed through the community process under the Big Tent (Openstack). Following are 
+the striking features:
+  - fairly difficult to setup.
+  - uses pull configuration i.e. client pulls configurations from the server through
+    constant polling making it a non-immediate remote execution system
+  - not easy to learn to manage configs as it uses its own Puppet DSL
+  - very well interoperabale i.e. puppet master works only on linux/unix while 
+    Puppet agent also works on Windows
+  - not a master-less layout. i.e. follows a client-server architecture and also supports
+     multi-master architecture to overcome single point of failure.
+  - highly scalable
+  - users:
+     - Paypal
+     - NYSE
+     - ADP
+     - Symantec
+     - Sony
+  - OSIC fact: Rackspace used to use Puppet for automated deployments in production but 
+    recently moved onto using Ansible
+
+
+Chef
+----
+Chef, introduced in 2008 is also one of the oldest and mature tools to automate deployment
+of services. Like Puppet, Chef is also managed trhough community process under the Big 
+Tent (OpenStack). Let's look at the features now:
+  - most difficult to setup given the additional workstation
+  - uses pull configuration like Puppet. i.e. clients pulls configuration from server
+  - not easy to learn and requies a programming perspective to manage configs in RubyDSL
+  - very well interoperable i.e. chef server only works on linux/unix but the workstation 
+    works on Windows too
+  - not a "master-less layout. i.e. chef follows a client-server architecture with chef 
+    master running on server manchine and chef client working on client machines. Also contains 
+    an extra component called workstation that contains all the configurations where all the
+    configurations first tested and then pushed onto the client servers.
+  - highly scalable
+  - users:
+     - Bloomberg
+     - GE Capital,
+     - Digital Science
+     - Nordstorm
+
+
+Ansible
+-------
+Ansible, introduced in 2013, is a pretty mature project and widely used project in the industry 
+today. Here's why:
+ - master-less layout! i.e. master runs on a server but with no agents running on client machines. 
+ - uses ssh to login to the client and communicate. Comuunication with ssh becomes a bottleneck 
+   at high scale
+ - eaiest to learn and setup
+ - uses push configuration i.e. server pushes configurations to all nodes making it immediate 
+   remote execution.
+ - uses YAML (Python) which is very simple to understand and customize solutions
+ - users:
+    - Bluebox,
+    - RedHat
+    - Rackspace
+ - OSIC fact: Rackspace currently uses Ansible for automated deployments in production. 
+
+
+SaltStack
+---------
+Salt, introduced in 2012, is not the most popuraly used automated tool in industry but is
+definitely one of the most widely contributed to, and quickly growing community. 
+  - is not a "master-less" architecture, follows master-minion (server-client) architecture
+    where master is the central configuration server that manages all its minions on the
+    client servers
+  - comparably faster than ansible due to its zeromq implementation for communication 
+    between master and minions
+  - it is widely interoprable i.e. master runs only on a *nix machine while mionions can
+    be operated on windows machines
+  - highly scalable and proven by LinledIn in its production cluster
+  - uses push configuration i.e. master pushes configurations onto minions for immediate
+    remote execution
+  - uses YAML(Python) making it easy to understand and configure custom deployments
+  - steep learning curve due to poorly organized documentation
+  - users:
+    - Rackspace (uses for testing deployments)
+    - LinkedIn
+    - Paypal
+    - Verizon
+    - HP
+  OSIC fact: Today, Salt is used in Rackspace to test automated deployments. 
+
+
+
+Conclusion
+========== 
+Having seen all the striking features of the most popular opensourced automated
+deployment tools in the market, I personally would want to lean towards Salt for
+the following reasons:
+  - Salt is fast compared to Ansible due to it zeromq communication channel
+  - Puppet and Chef use their own DSL making the learning curve steeper
+  - Ansible may be the most easiest one to explore but the new trend in the devops
+    community is to experiment with Salt given its
+       - hihgly modular components
+       - easy to understand language implementation (YAML + Python + Jinja2)
+       - speed! 
+       - discounting on the learning curve aspect given my personal interest in
+         customizing deployment of only OpenStack swift
+       - possibility of exploring orchestration using salt-cloud which supports
+         openstack cloud profiles
+
+
+NOTE:
+----
+This aritcle is purely opinionated and highly abstract on a lot of technical details.
+Intention for this exploration was to find an appropriate tool to deploy multi node
+OpenStack Swift. 
